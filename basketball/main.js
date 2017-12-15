@@ -11,6 +11,7 @@ app.view.style.transform = 'translate3d( -50%, -50%, 0 )';
 
 var basketBall = PIXI.Sprite.fromImage('Assets/basketBall.png')
 var basketHoop = PIXI.Sprite.fromImage('Assets/basketballhoop.png')
+var exitToMainMenu = PIXI.Sprite.fromImage('')
 basketBall.anchor.set(0.5);
 basketHoop.anchor.set(0.5);
 
