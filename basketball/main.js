@@ -24,6 +24,7 @@ var da = 0;
 
 var floor = 623; 
 var gravity = 0.3;
+var paused = false;
 
 var shootAgain = true;
 var shotHeight = 17;
@@ -50,6 +51,8 @@ app.view.onmousemove = moveHandler;
 console.log()
 
  app.ticker.add(function(delta) {
+
+  
 
 //When the ball is shot
   if(pleaseShoot) {
@@ -144,7 +147,8 @@ console.log()
 
 // }
 
-//Heght of the shot
+//Height of the shot
+
 
 
 });
@@ -160,7 +164,21 @@ console.log()
          // strength += 1;
 
     }
-});
+
+    if(event.keyCode == 27 && paused == false) {
+       
+       app.ticker.start();
+       paused = true;
+
+    } else if (event.keyCode == 27 && paused) {
+
+       app.ticker.stop();
+       paused = false;
+
+    }
+
+  });
+
 
  document.addEventListener('keyup', function(event) {
     if(event.keyCode == 32 && shootAgain == true) {
