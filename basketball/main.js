@@ -11,12 +11,12 @@ app.view.style.transform = 'translate3d( -50%, -50%, 0 )';
 
 var basketBall = PIXI.Sprite.fromImage('Assets/basketBall.png')
 var basketHoop = PIXI.Sprite.fromImage('Assets/basketballhoop.png')
-var exitToMainMenu = PIXI.Sprite.fromImage('')
+var exitToMainMenu = PIXI.Sprite.fromImage('Assets/exit.png')
 basketBall.anchor.set(0.5);
 basketHoop.anchor.set(0.5);
 
-var mouseX = document.getElementById('mouse_X');
-var mouseY = document.getElementById('mouse_Y');
+// var mouseX = document.getElementById('mouse_X');
+// var mouseY = document.getElementById('mouse_Y');
 
 var dxBeforeSpace = 0;
 var dx = 0;
@@ -166,15 +166,18 @@ console.log()
 
     }
 
-    if(event.keyCode == 27 && paused == false) {
+    if(event.keyCode == 27 && !paused) {
        
-       app.ticker.start();
+       app.ticker.stop();
        paused = true;
+       app.stage.addChild(exitToMainMenu);
+       
 
     } else if (event.keyCode == 27 && paused) {
 
-       app.ticker.stop();
+       app.ticker.start();
        paused = false;
+       app.stage.removeChild(exitToMainMenu);
 
     }
 
@@ -201,12 +204,12 @@ console.log()
 
 });
 
- function readMouseMove (e) {
+//  function readMouseMove (e) {
   
-  mouseX.innerHTML = e.clientX;
-  mouseY.innerHTML = e.clientY;
-}
-document.onmousemove = readMouseMove;
+//   mouseX.innerHTML = e.clientX;
+//   mouseY.innerHTML = e.clientY;
+// }
+// document.onmousemove = readMouseMove;
 
 
 //  function shotTheBall() {
