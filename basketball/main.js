@@ -158,13 +158,12 @@ console.log()
 
 function addPauseMenu(){
 
-  document.getElementById("pauseMenu").innerHTML += "<img src='Assets/exit.png'>";
-
+ 
 }
 
 function removePauseMenu(){
 
-  document.getElementById("pauseMenu").innerHTML -= "<img src='Assets/exit.png'>";
+  
 
 }
  
@@ -182,12 +181,13 @@ function removePauseMenu(){
        
        paused = true;
        // app.stage.addChild(exitToMainMenu);
-       addPauseMenu();
+       document.getElementById("pauseMenu").innerHTML += "<img src='Assets/exit.png'>";
+
     } else if (event.keyCode == 27 && paused) {
 
        paused = false;
        // app.stage.removeChild(exitToMainMenu);
-      removePauseMenu();
+       document.getElementById("pauseMenu").innerHTML -= "<img src='Assets/exit.png'>";
     }
 
   });
