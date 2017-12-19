@@ -126,8 +126,18 @@ app.view.onmousemove = moveHandler;
 
 });
 
- 
+function addPauseMenu(){
 
+  document.getElementById("pauseMenu").innerHTML += "<img src='Assets/exit.png'>";
+
+}
+
+function removePauseMenu(){
+
+  document.getElementById("pauseMenu").innerHTML -= "<img src='Assets/exit.png'>";
+
+}
+ 
 
  document.addEventListener('keydown', function(event) {
     if(event.keyCode == 32 && dxBeforeSpace == 0 && shootAgain == true) {
@@ -139,14 +149,13 @@ app.view.onmousemove = moveHandler;
     if(event.keyCode == 27 && !paused) {
        
        paused = true;
-       app.stage.addChild(exitToMainMenu);
-       
-
+       // app.stage.addChild(exitToMainMenu);
+       addPauseMenu();
     } else if (event.keyCode == 27 && paused) {
 
        paused = false;
-       app.stage.removeChild(exitToMainMenu);
-
+       // app.stage.removeChild(exitToMainMenu);
+      removePauseMenu();
     }
 
   });
