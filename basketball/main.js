@@ -126,15 +126,15 @@ app.view.onmousemove = moveHandler;
 
 });
 
-function addPauseMenu(){
+function showPauseMenu(){
 
-  document.getElementById("pauseMenu").innerHTML += "<img src='Assets/exit.png'>";
+  document.getElementById("pauseMenu").style.display = "";
 
 }
 
-function removePauseMenu(){
+function hidePauseMenu(){
 
-  document.getElementById("pauseMenu").innerHTML -= "<img src='Assets/exit.png'>";
+  document.getElementById("pauseMenu").style.display = "none";
 
 }
  
@@ -150,12 +150,12 @@ function removePauseMenu(){
        
        paused = true;
        // app.stage.addChild(exitToMainMenu);
-       addPauseMenu();
+       showPauseMenu();
     } else if (event.keyCode == 27 && paused) {
 
        paused = false;
        // app.stage.removeChild(exitToMainMenu);
-      removePauseMenu();
+      hidePauseMenu();
     }
 
   });
