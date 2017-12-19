@@ -53,6 +53,8 @@ console.log()
 
  app.ticker.add(function(delta) {
 
+  if (paused) {return;}
+
   
 
 //When the ball is shot
@@ -168,14 +170,12 @@ console.log()
 
     if(event.keyCode == 27 && !paused) {
        
-       app.ticker.stop();
        paused = true;
        app.stage.addChild(exitToMainMenu);
        
 
     } else if (event.keyCode == 27 && paused) {
 
-       app.ticker.start();
        paused = false;
        app.stage.removeChild(exitToMainMenu);
 
