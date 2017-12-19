@@ -23,7 +23,7 @@ var dx = 0;
 var dy = -0;
 var da = 0;
 
-var floor = 623; 
+var floor = 580; 
 var gravity = 0.3;
 var paused = false;
 
@@ -45,11 +45,11 @@ var pleaseShoot = false;
 function moveHandler(event) {
     var x = event.x - app.view.getBoundingClientRect().left;
     var y = event.y - app.view.getBoundingClientRect().top;
-    console.log("X:"+x+", Y:" + y)
+    // console.log("X:"+x+", Y:" + y)
 }
 app.view.onmousemove = moveHandler;
 
-console.log()
+// console.log()
 
  app.ticker.add(function(delta) {
 
@@ -59,10 +59,10 @@ console.log()
 
 //When the ball is shot
   if(pleaseShoot) {
-    console.log("Shoot the ball")
+    // console.log("Shoot the ball")
     dx = 13;
     dy = -shotHeight;
-    da = -0.02;
+    da /= 2
     basketBall.y = floor;
     pleaseShoot=false;
     strength=0;
@@ -76,9 +76,12 @@ console.log()
  // basketBall.y = floor;
 
    }
-//Air resistance(dx and dy)
-  dx -= dx > 0 ? 0.005 : -0.005
-  dy -= dy > 0 ? 0.005 : -0.005
+  
+  //Air resistance(dx and dy)
+  if(dx != 0)
+    dx -= dx > 0 ? 0.005 : -0.005
+  if(dy != 0)
+    dy -= dy > 0 ? 0.005 : -0.005
 
   if (basketBall.x <= 10 && shootAgain == true) {
     dx = 5;
@@ -89,30 +92,22 @@ console.log()
     basketBall.x = 1245;
   } 
 
-   //else if (basketBall.x >= 1245 && shootAgain == false) {
-  // dx = dxShot;
-  // var dxShot = -dx/100*80;
-  // }
-    
-  //  
-
+  // bounce moment
   if (basketBall.y > floor) {
-
     dy = -dy*0.5;
-
     if(Math.abs(dy) < 1)
       dy = 0
     
     basketBall.y = floor;
-    shootAgain = true;
+  } 
 
-    // console.log("bounce")
-    // if( dx > 0 && a < 0 || dx < 0 && a > 0)
-    //   a = 0
-
+  // when on the ground
+  if (basketBall.y == floor) {
     da = dx * 0.045;
+    shootAgain = true;
   }
 
+  // when in the air
   if (basketBall.y < floor) {
     
     shootAgain = false;
@@ -123,57 +118,39 @@ console.log()
   basketBall.x += dx * delta;
   basketBall.rotation += da * delta;
 
+  // console.log("basketBall.y: "+basketBall.y + " dy: " + dy)
+
   document.getElementById("debug").innerHTML  = "dx="+dx;
-
- // console.log(strength)
-
-  //basketball hoop physics
-
-  // console.log(mouseData);
-//  document.addEventListener('keydown', function(event) {
-//     if(event.keyCode == 32 && dxBeforeSpace == 0 && shootAgain == true) {
-//        //alert('Space was pressed');
-//        delta/4
-//         strength += 0.01
-
-//     }
-// });
-
-//Basketball hoop physics
-// console.log(basketBall.x + basketBall.y);
-// if (basketBall.y) {
-
-//   dx = -0.5*dx;
-//   dy = -0.5*dy;
-
-//   console.log("Rim hit!")
-
-// }
-
-//Height of the shot
 
 
 
 });
 
-function addPauseMenu(){
+function showPauseMenu(){
 
+<<<<<<< HEAD
  
+=======
+  document.getElementById("pauseMenu").style.display = "";
+
+>>>>>>> 18bde8206558daa7a8970b1c83cad2f817e5e2a8
 }
 
-function removePauseMenu(){
+function hidePauseMenu(){
 
+<<<<<<< HEAD
   
+=======
+  document.getElementById("pauseMenu").style.display = "none";
+>>>>>>> 18bde8206558daa7a8970b1c83cad2f817e5e2a8
 
 }
  
 
  document.addEventListener('keydown', function(event) {
     if(event.keyCode == 32 && dxBeforeSpace == 0 && shootAgain == true) {
-        //alert('Space was pressed');
-        dxBeforeSpace = dx;
-        dx = 0;
-         // strength += 1;
+      dxBeforeSpace = dx;
+      dx = 0;
 
     }
 
@@ -181,13 +158,21 @@ function removePauseMenu(){
        
        paused = true;
        // app.stage.addChild(exitToMainMenu);
+<<<<<<< HEAD
        document.getElementById("pauseMenu").innerHTML += "<img src='Assets/exit.png'>";
 
+=======
+       showPauseMenu();
+>>>>>>> 18bde8206558daa7a8970b1c83cad2f817e5e2a8
     } else if (event.keyCode == 27 && paused) {
 
        paused = false;
        // app.stage.removeChild(exitToMainMenu);
+<<<<<<< HEAD
        document.getElementById("pauseMenu").innerHTML -= "<img src='Assets/exit.png'>";
+=======
+      hidePauseMenu();
+>>>>>>> 18bde8206558daa7a8970b1c83cad2f817e5e2a8
     }
 
   });
@@ -198,7 +183,8 @@ function removePauseMenu(){
         //alert('Space was pressed');
         dx = dxBeforeSpace;
         dxBeforeSpace = 0;
-        
+        // da/=2
+
         pleaseShoot=true;
         // shotTheBall();
          
