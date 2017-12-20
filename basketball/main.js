@@ -13,7 +13,7 @@ var basketBall = PIXI.Sprite.fromImage('Assets/basketBall.png')
 var basketBallShadow = PIXI.Sprite.fromImage('Assets/shadow.png')
 var basketHoop = PIXI.Sprite.fromImage('Assets/basketballhoop.png')
 var exitToMainMenu = PIXI.Sprite.fromImage('Assets/exit.png')
-var floor = PIXI.Sprite.fromImage('Assets/exit.png')
+var floor = PIXI.Sprite.fromImage('Assets/floor.png')
 
 basketBall.anchor.set(0.5);
 basketBallShadow.anchor.set(0.5);
@@ -128,7 +128,7 @@ app.ticker.add(function(delta) {
   basketBallShadow.y = floor+16;
   basketBallShadow.x = basketBall.x
   var shadowAlpha = (distanceToWitchShadowIsVisible - (floor - basketBall.y))/distanceToWitchShadowIsVisible
-  basketBallShadow.alpha = shadowAlpha * 0.5 // 0.5 is additional bluring
+  basketBallShadow.alpha = shadowAlpha * 0.8 // 0.5 is additional bluring
 
   // console.log("basketBall.y: "+basketBall.y + " dy: " + dy)
 
