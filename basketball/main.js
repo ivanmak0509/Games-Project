@@ -10,11 +10,11 @@ app.view.style.top = '50%';
 app.view.style.transform = 'translate3d( -50%, -50%, 0 )';
 
 var basketBall = PIXI.Sprite.fromImage('Assets/basketBall.png')
-
 var basketBallShadow = PIXI.Sprite.fromImage('Assets/shadow.png')
-
 var basketHoop = PIXI.Sprite.fromImage('Assets/basketballhoop.png')
 var exitToMainMenu = PIXI.Sprite.fromImage('Assets/exit.png')
+var floor = PIXI.Sprite.fromImage('Assets/exit.png')
+
 basketBall.anchor.set(0.5);
 basketBallShadow.anchor.set(0.5);
 basketHoop.anchor.set(0.5);
