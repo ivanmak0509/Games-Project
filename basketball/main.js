@@ -131,21 +131,20 @@ app.view.onmousemove = moveHandler;
 
 function showPauseMenu(){
 
-<<<<<<< HEAD
+
  
-=======
+
   document.getElementById("pauseMenu").style.display = "";
 
->>>>>>> 18bde8206558daa7a8970b1c83cad2f817e5e2a8
+
 }
 
 function hidePauseMenu(){
 
-<<<<<<< HEAD
-  
-=======
+
+
   document.getElementById("pauseMenu").style.display = "none";
->>>>>>> 18bde8206558daa7a8970b1c83cad2f817e5e2a8
+
 
 }
  
@@ -161,21 +160,21 @@ function hidePauseMenu(){
        
        paused = true;
        // app.stage.addChild(exitToMainMenu);
-<<<<<<< HEAD
-       document.getElementById("pauseMenu").innerHTML += "<img src='Assets/exit.png'>";
 
-=======
+       // document.getElementById("pauseMenu").innerHTML += "<img src='Assets/exit.png'>";
+
+
        showPauseMenu();
->>>>>>> 18bde8206558daa7a8970b1c83cad2f817e5e2a8
+
     } else if (event.keyCode == 27 && paused) {
 
        paused = false;
        // app.stage.removeChild(exitToMainMenu);
-<<<<<<< HEAD
-       document.getElementById("pauseMenu").innerHTML -= "<img src='Assets/exit.png'>";
-=======
+
+       // document.getElementById("pauseMenu").innerHTML -= "<img src='Assets/exit.png'>";
+
       hidePauseMenu();
->>>>>>> 18bde8206558daa7a8970b1c83cad2f817e5e2a8
+
     }
 
   });
