@@ -43,7 +43,7 @@ basketBall.x = 9;
 basketBall.y = floor;
 
 basketHoop.x = 1180;
-basketHoop.y = 400;
+basketHoop.y = 300;
 
 var pleaseShoot = false;
 
