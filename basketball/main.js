@@ -123,11 +123,12 @@ app.ticker.add(function(delta) {
   basketBall.x += dx * delta;
   basketBall.rotation += da * delta;
 
+  // shadow
+  var distanceToWitchShadowIsVisible = 500
   basketBallShadow.y = floor+16;
   basketBallShadow.x = basketBall.x
-  var shadowAlpha = (500 - (floor - basketBall.y))/500
-  // console.log(shadowAlpha)
-  basketBallShadow.alpha = shadowAlpha * 0.5
+  var shadowAlpha = (distanceToWitchShadowIsVisible - (floor - basketBall.y))/distanceToWitchShadowIsVisible
+  basketBallShadow.alpha = shadowAlpha * 0.5 // 0.5 is additional bluring
 
   // console.log("basketBall.y: "+basketBall.y + " dy: " + dy)
 
