@@ -10,9 +10,13 @@ app.view.style.top = '50%';
 app.view.style.transform = 'translate3d( -50%, -50%, 0 )';
 
 var basketBall = PIXI.Sprite.fromImage('Assets/basketBall.png')
+
+var basketBallShadow = PIXI.Sprite.fromImage('Assets/shadow.png')
+
 var basketHoop = PIXI.Sprite.fromImage('Assets/basketballhoop.png')
 var exitToMainMenu = PIXI.Sprite.fromImage('Assets/exit.png')
 basketBall.anchor.set(0.5);
+basketBallShadow.anchor.set(0.5);
 basketHoop.anchor.set(0.5);
 
 // var mouseX = document.getElementById('mouse_X');
@@ -31,6 +35,7 @@ var shootAgain = true;
 var shotHeight = 17;
 
 
+app.stage.addChild(basketBallShadow);
 app.stage.addChild(basketBall);
 app.stage.addChild(basketHoop);
 
@@ -51,7 +56,7 @@ app.view.onmousemove = moveHandler;
 
 // console.log()
 
- app.ticker.add(function(delta) {
+app.ticker.add(function(delta) {
 
   if (paused) {return;}
 
@@ -117,6 +122,12 @@ app.view.onmousemove = moveHandler;
   basketBall.y += dy * delta;
   basketBall.x += dx * delta;
   basketBall.rotation += da * delta;
+
+  basketBallShadow.y = floor+16;
+  basketBallShadow.x = basketBall.x
+  var shadowAlpha = (500 - (floor - basketBall.y))/500
+  // console.log(shadowAlpha)
+  basketBallShadow.alpha = shadowAlpha * 0.5
 
   // console.log("basketBall.y: "+basketBall.y + " dy: " + dy)
 
