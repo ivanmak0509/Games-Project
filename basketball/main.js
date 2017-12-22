@@ -138,6 +138,7 @@ app.ticker.add(function(delta) {
 
 });
 
+
 function showPauseMenu(){
 
 
@@ -154,6 +155,12 @@ function hidePauseMenu(){
 
   document.getElementById("pauseMenu").style.display = "none";
 
+
+}
+
+function resumeGame() {
+
+    paused = false;
 
 }
  
