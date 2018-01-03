@@ -206,6 +206,12 @@ function resumeGame() {
 
 }
 
+function hideStartMenu () {
+
+  document.getElementById("startingMenu").style.display = "none";
+
+}
+
 
 document.addEventListener('keydown', function(event) {
 
