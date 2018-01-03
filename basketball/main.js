@@ -195,6 +195,12 @@ function resumeGame() {
 
 }
 
+function hideStartMenu () {
+
+  document.getElementById("startingMenu").style.display = "none";
+
+}
+
 
  
 var shootingStrength = 0;
@@ -289,4 +295,6 @@ function releaseShot() {
 
 
 }
+
+
 
