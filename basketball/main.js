@@ -69,7 +69,7 @@ var pleaseShoot = false;
 function moveHandler(event) {
     var x = event.x - app.view.getBoundingClientRect().left;
     var y = event.y - app.view.getBoundingClientRect().top;
-     console.log("X:"+x+", Y:" + y)
+     // console.log("X:"+x+", Y:" + y)
 }
 app.view.onmousemove = moveHandler;
 
@@ -85,7 +85,9 @@ if (paused) {return;}
 //When the ball is shot
   if(pleaseShoot) {
     // console.log("Shoot the ball")
-    dx = 5 + shootingStrength * 1;
+    var fx = (1200-basketBall.x)/300
+    dx = fx + shootingStrength * 1;
+    console.log("fx:"+fx)
     dy = -1 * (5 + shootingStrength * 2);
     da /= 2
     basketBall.y = floor;
