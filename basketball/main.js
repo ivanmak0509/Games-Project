@@ -29,13 +29,9 @@ var da = 0;
 
 var floor = 580; 
 var gravity = 0.3;
-var paused = false;
+var paused = true;
 
 var showStart = true;
-
-
-
-
 
 var shootAgain = true;
 var shotHeight = 17;
@@ -168,7 +164,7 @@ function hoopPhysics() {
 
 
 
-
+//PAUSE MENU
 
 function showPauseMenu(){
 
@@ -189,9 +185,19 @@ function hidePauseMenu(){
 
 }
 
+//RESUME GAME
+
 function resumeGame() {
 
     paused = false;
+
+}
+
+//STARTING MENU
+
+function showStartMenu () {
+
+  document.getElementById("startingMenu").style.display = "";
 
 }
 
@@ -200,6 +206,95 @@ function hideStartMenu () {
   document.getElementById("startingMenu").style.display = "none";
 
 }
+
+//OPTION MENU
+
+function showOptionsMenu() {
+
+ document.getElementById("optionMenu").style.display = "";
+
+}
+
+function hideOptionsMenu() {
+
+  document.getElementById("optionMenu").style.display = "none";
+ 
+}
+
+//SETTINGS MENU
+
+function showSettings () {
+
+  document.getElementById("settingsMenu").style.display = "";
+
+}
+
+function hideSettings () {
+
+  document.getElementById("settingsMenu").style.display = "none";
+
+}
+
+//STORE MENU
+
+function showStore () {
+
+  document.getElementById("storeMenu").style.display = "";
+
+}
+
+function hideStore () {
+
+  document.getElementById("storeMenu").style.display = "none";
+
+
+}
+
+
+
+//FUNCTIONS FOR PAUSE
+
+function showOptionsMenuP() {
+
+ document.getElementById("optionMenuP").style.display = "";
+
+}
+
+function hideOptionsMenuP() {
+
+  document.getElementById("optionMenuP").style.display = "none";
+ 
+}
+
+//SETTINGS MENU
+
+function showSettingsP () {
+
+  document.getElementById("settingsMenuP").style.display = "";
+
+}
+
+function hideSettingsP () {
+
+  document.getElementById("settingsMenuP").style.display = "none";
+
+}
+
+//STORE MENU
+
+function showStoreP () {
+
+  document.getElementById("storeMenuP").style.display = "";
+
+}
+
+function hideStoreP () {
+
+  document.getElementById("storeMenuP").style.display = "none";
+
+
+}
+
 
 
  
@@ -256,6 +351,7 @@ document.addEventListener('keydown', function(event) {
      
      paused = true;
      showPauseMenu();
+
 
   } else if (event.keyCode == 27 && paused) {
 
