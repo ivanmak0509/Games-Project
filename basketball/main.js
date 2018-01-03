@@ -22,7 +22,7 @@ basketHoop.anchor.set(0.5);
 // var mouseX = document.getElementById('mouse_X');
 // var mouseY = document.getElementById('mouse_Y');
 
-var dxBeforeSpace = 0;
+// var dxBeforeSpace = 0;
 var dx = 0;
 var dy = -0;
 var da = 0;
@@ -30,6 +30,8 @@ var da = 0;
 var floor = 580; 
 var gravity = 0.3;
 var paused = false;
+
+
 
 var shootAgain = true;
 var shotHeight = 17;
@@ -45,6 +47,13 @@ basketBall.y = floor;
 basketHoop.x = 1180;
 basketHoop.y = 300;
 
+// DEBUG
+// paused = true;
+// basketBall.x = 1200;
+// basketBall.y = 258;
+
+
+
 var pleaseShoot = false;
 
 function moveHandler(event) {
@@ -58,6 +67,10 @@ app.view.onmousemove = moveHandler;
 
 app.ticker.add(function(delta) {
 
+
+  document.getElementById("debug").innerHTML  = "x=" + Math.floor(basketBall.x) + " y=" + Math.floor(basketBall.y);
+
+
   if (paused) {return;}
 
   
@@ -65,8 +78,8 @@ app.ticker.add(function(delta) {
 //When the ball is shot
   if(pleaseShoot) {
     // console.log("Shoot the ball")
-    dx = 13;
-    dy = -shotHeight;
+    dx = 5 + shootingStrength * 1;
+    dy = -1 * (5 + shootingStrength * 2);
     da /= 2
     basketBall.y = floor;
     pleaseShoot=false;
@@ -118,6 +131,7 @@ app.ticker.add(function(delta) {
     shootAgain = false;
   } 
 
+  hoopPhysics();
 
   basketBall.y += dy * delta;
   basketBall.x += dx * delta;
@@ -132,11 +146,21 @@ app.ticker.add(function(delta) {
 
   // console.log("basketBall.y: "+basketBall.y + " dy: " + dy)
 
-  document.getElementById("debug").innerHTML  = "dx="+dx;
-
 
 
 });
+
+function hoopPhysics() {
+
+  if( basketBall.x > 1228 && basketBall.y>=226 && basketBall.y < 334 ) {
+    dx = -0.5 * dx;
+    basketBall.x = 1228;
+  }
+
+}
+
+
+
 
 
 function showPauseMenu(){
@@ -164,75 +188,94 @@ function resumeGame() {
 
 }
  
+var shootingStrength = 0;
+var shootingStrengthInterval = null;
 
- document.addEventListener('keydown', function(event) {
-    if(event.keyCode == 32 && dxBeforeSpace == 0 && shootAgain == true) {
-      dxBeforeSpace = dx;
-      dx = 0;
+document.addEventListener('keydown', function(event) {
+
+
+  if(!pleaseShoot && event.keyCode == 32 && shootAgain == true) {
+
+    console.log("start shot")
+    // dxBeforeSpace = dx;
+    dx = 0;
+
+    if(!shootingStrengthInterval) {
+
+      shootingStrength = 1;
+      console.log("start shooting interval")
+
+      shootingStrengthInterval = setInterval(function() {
+        shootingStrength ++;
+        if(shootingStrength >= 10) {
+          releaseShot()
+          return;
+        }
+        
+        document.getElementById("shootingStrength").innerHTML = "Shooting strength: " + shootingStrength
+
+      }, 100)
+
 
     }
-
-    if(event.keyCode == 27 && !paused) {
-       
-       paused = true;
-       // app.stage.addChild(exitToMainMenu);
-
-       // document.getElementById("pauseMenu").innerHTML += "<img src='Assets/exit.png'>";
+  }
 
 
-       showPauseMenu();
+  // console.log("key:" + event.keyCode)
 
-    } else if (event.keyCode == 27 && paused) {
+  if(event.keyCode == 39) {
+    basketBall.x += 2
 
-       paused = false;
-       // app.stage.removeChild(exitToMainMenu);
+  } else if( event.keyCode == 37) {
+    basketBall.x -= 2
+  } else if( event.keyCode == 38) {
+    basketBall.y -= 2
+  } else if( event.keyCode == 40) {
+    basketBall.y += 2
+  } else if( event.keyCode == 80) {
+    paused = !paused
+    dx = 4;
+  }
 
-       // document.getElementById("pauseMenu").innerHTML -= "<img src='Assets/exit.png'>";
+  if(event.keyCode == 27 && !paused) {
+     
+     paused = true;
+     showPauseMenu();
 
-      hidePauseMenu();
+  } else if (event.keyCode == 27 && paused) {
 
-    }
+     paused = false;
 
-  });
+    hidePauseMenu();
 
-
- document.addEventListener('keyup', function(event) {
-    if(event.keyCode == 32 && shootAgain == true) {
-        //alert('Space was pressed');
-        dx = dxBeforeSpace;
-        dxBeforeSpace = 0;
-        // da/=2
-
-        pleaseShoot=true;
-        // shotTheBall();
-         
-
-    }
-// mouseMoveCallback();
-//   // basketHoop.on('mousemove', mouseMoveCallback);
-//   function mouseMoveCallback(mouseData) {  
-//   console.log("X = "+mouseData.data.originalEvent.movementX);  
-//   console.log("Y = "+mouseData.data.originalEvent.movementY);
-// }
+  }
 
 });
 
-//  function readMouseMove (e) {
-  
-//   mouseX.innerHTML = e.clientX;
-//   mouseY.innerHTML = e.clientY;
-// }
-// document.onmousemove = readMouseMove;
+
+document.addEventListener('keyup', function(event) {
+  if(event.keyCode == 32 && shootingStrengthInterval && shootAgain == true) {
 
 
-//  function shotTheBall() {
+      releaseShot();
+
+  }
+
+});
 
 
+function releaseShot() {
+  clearInterval(shootingStrengthInterval)
+  shootingStrengthInterval = null
+  document.getElementById("shootingStrength").innerHTML = ""
 
-// }
-//  function moveBall(object, distance) {
-//  object.x = object.x + distance * Math.cos(object.rotation);
-//  object.y = object.y + distance * Math.sin(object.rotation);
-// }
 
- 
+  console.log("Release shot: " + shootingStrength)
+
+  // dx = dxBeforeSpace;
+  // dxBeforeSpace = 0;
+  pleaseShoot=true;
+
+
+}
+
