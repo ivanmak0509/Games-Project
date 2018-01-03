@@ -9,11 +9,11 @@ app.view.style.left = '50%';
 app.view.style.top = '50%';
 app.view.style.transform = 'translate3d( -50%, -50%, 0 )';
 
-var basketBall = PIXI.Sprite.fromImage('Assets/basketBall.png')
-var basketBallShadow = PIXI.Sprite.fromImage('Assets/shadow.png')
-var basketHoop = PIXI.Sprite.fromImage('Assets/basketballhoop.png')
-var exitToMainMenu = PIXI.Sprite.fromImage('Assets/exit.png')
-var floor = PIXI.Sprite.fromImage('Assets/floor.png')
+var basketBall = PIXI.Sprite.fromImage('Assets/basketBall.png');
+var basketBallShadow = PIXI.Sprite.fromImage('Assets/shadow.png');
+var basketHoop = PIXI.Sprite.fromImage('Assets/basketballhoop.png');
+var exitToMainMenu = PIXI.Sprite.fromImage('Assets/exit.png');
+var floor = PIXI.Sprite.fromImage('Assets/floor.png');
 
 basketBall.anchor.set(0.5);
 basketBallShadow.anchor.set(0.5);
@@ -29,17 +29,27 @@ var da = 0;
 
 var floor = 580; 
 var gravity = 0.3;
-var paused = false;
+var paused = true;
+
+var showStart = true;
+
+
 
 
 
 var shootAgain = true;
 var shotHeight = 17;
 
+var score = 0;
+
+var startOfGame = true;
 
 app.stage.addChild(basketBallShadow);
 app.stage.addChild(basketBall);
 app.stage.addChild(basketHoop);
+
+
+
 
 basketBall.x = 9;
 basketBall.y = floor;
@@ -59,7 +69,7 @@ var pleaseShoot = false;
 function moveHandler(event) {
     var x = event.x - app.view.getBoundingClientRect().left;
     var y = event.y - app.view.getBoundingClientRect().top;
-    // console.log("X:"+x+", Y:" + y)
+     console.log("X:"+x+", Y:" + y)
 }
 app.view.onmousemove = moveHandler;
 
@@ -67,12 +77,9 @@ app.view.onmousemove = moveHandler;
 
 app.ticker.add(function(delta) {
 
+document.getElementById("debug").innerHTML  = "x=" + Math.floor(basketBall.x) + " y=" + Math.floor(basketBall.y);
 
-  document.getElementById("debug").innerHTML  = "x=" + Math.floor(basketBall.x) + " y=" + Math.floor(basketBall.y);
-
-
-  if (paused) {return;}
-
+if (paused) {return;}
   
 
 //When the ball is shot
@@ -187,6 +194,8 @@ function resumeGame() {
     paused = false;
 
 }
+
+
  
 var shootingStrength = 0;
 var shootingStrengthInterval = null;
@@ -245,6 +254,8 @@ document.addEventListener('keydown', function(event) {
   } else if (event.keyCode == 27 && paused) {
 
      paused = false;
+     startOfGame = false;
+     // app.stage.removeChild(exitToMainMenu);
 
     hidePauseMenu();
 
