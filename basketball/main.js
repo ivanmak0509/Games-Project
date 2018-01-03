@@ -29,17 +29,23 @@ var da = 0;
 
 var floor = 580; 
 var gravity = 0.3;
-var paused = false;
+var paused = true;
+
+var showStart = true;
+
+
 
 var shootAgain = true;
 var shotHeight = 17;
 
 var score = 0;
 
+var startOfGame = true;
+
 app.stage.addChild(basketBallShadow);
 app.stage.addChild(basketBall);
 app.stage.addChild(basketHoop);
-addScore();
+
 
 
 
@@ -54,7 +60,7 @@ var pleaseShoot = false;
 function moveHandler(event) {
     var x = event.x - app.view.getBoundingClientRect().left;
     var y = event.y - app.view.getBoundingClientRect().top;
-    // console.log("X:"+x+", Y:" + y)
+     console.log("X:"+x+", Y:" + y)
 }
 app.view.onmousemove = moveHandler;
 
@@ -62,7 +68,13 @@ app.view.onmousemove = moveHandler;
 
 app.ticker.add(function(delta) {
 
-  if (paused) {return;}
+ 
+  if (paused) {
+
+    
+    return;
+
+  }
 
   
 
@@ -167,6 +179,11 @@ function resumeGame() {
 
 }
 
+// function hideStartingMenu() {
+
+//   document.getElementById("startingMenu").style.display = "none";
+
+// }
 
  
 
@@ -190,6 +207,7 @@ function resumeGame() {
     } else if (event.keyCode == 27 && paused) {
 
        paused = false;
+       startOfGame = false;
        // app.stage.removeChild(exitToMainMenu);
 
        // document.getElementById("pauseMenu").innerHTML -= "<img src='Assets/exit.png'>";
