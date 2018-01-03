@@ -29,7 +29,7 @@ var da = 0;
 
 var floor = 580; 
 var gravity = 0.3;
-var paused = true;
+var paused = false;
 
 var showStart = true;
 
