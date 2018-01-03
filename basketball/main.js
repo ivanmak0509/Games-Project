@@ -1,9 +1,9 @@
 var app = new PIXI.Application(1260, 640, {backgroundColor : 0x1099bb});
-// document.body.appendChild(app.view);
+document.body.appendChild(app.view);
 
 
 // var renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
-document.body.appendChild(app.view);
+// document.body.appendChild(app.view);
 app.view.style.position = 'absolute';
 app.view.style.left = '50%';
 app.view.style.top = '50%';
@@ -66,6 +66,10 @@ basketHoop.y = 300;
 
 var pleaseShoot = false;
 
+function getMouseCoordinates() {
+  return app.renderer.plugins.interaction.mouse.global
+}
+
 function moveHandler(event) {
     var x = event.x - app.view.getBoundingClientRect().left;
     var y = event.y - app.view.getBoundingClientRect().top;
@@ -83,17 +87,9 @@ if (paused) {return;}
   
 
 //When the ball is shot
-  if(pleaseShoot) {
-    // console.log("Shoot the ball")
-    var fx = (1200-basketBall.x)/300
-    dx = fx + shootingStrength * 1;
-    console.log("fx:"+fx)
-    dy = -1 * (5 + shootingStrength * 2);
-    da /= 2
-    basketBall.y = floor;
-    pleaseShoot=false;
-    strength=0;
-  }
+  // if(pleaseShoot) {
+  //   releaseShotRaw();
+  // }
 
 //Gravity acting on the ball
   if (basketBall.y < floor &&
@@ -198,38 +194,8 @@ function resumeGame() {
 }
 
 
- 
-var shootingStrength = 0;
-var shootingStrengthInterval = null;
-
 document.addEventListener('keydown', function(event) {
 
-
-  if(!pleaseShoot && event.keyCode == 32 && shootAgain == true) {
-
-    console.log("start shot")
-    // dxBeforeSpace = dx;
-    dx = 0;
-
-    if(!shootingStrengthInterval) {
-
-      shootingStrength = 1;
-      console.log("start shooting interval")
-
-      shootingStrengthInterval = setInterval(function() {
-        shootingStrength ++;
-        if(shootingStrength >= 10) {
-          releaseShot()
-          return;
-        }
-        
-        document.getElementById("shootingStrength").innerHTML = "Shooting strength: " + shootingStrength
-
-      }, 100)
-
-
-    }
-  }
 
 
   // console.log("key:" + event.keyCode)
@@ -263,32 +229,13 @@ document.addEventListener('keydown', function(event) {
 
   }
 
+  // document.getElementById("debug").innerHTML = getMouseCoordinates()
+
 });
 
 
 document.addEventListener('keyup', function(event) {
-  if(event.keyCode == 32 && shootingStrengthInterval && shootAgain == true) {
-
-
-      releaseShot();
-
-  }
 
 });
 
-
-function releaseShot() {
-  clearInterval(shootingStrengthInterval)
-  shootingStrengthInterval = null
-  document.getElementById("shootingStrength").innerHTML = ""
-
-
-  console.log("Release shot: " + shootingStrength)
-
-  // dx = dxBeforeSpace;
-  // dxBeforeSpace = 0;
-  pleaseShoot=true;
-
-
-}
 
