@@ -27,6 +27,9 @@ var dx = 0;
 var dy = -0;
 var da = 0;
 
+var dxChangeTo=null;
+var dyChangeTo=null;
+
 var floor = 580; 
 var gravity = 0.3;
 var paused = false;
@@ -85,6 +88,16 @@ document.getElementById("debug").innerHTML  = "x=" + Math.floor(basketBall.x) + 
 
 if (paused) {return;}
   
+
+if(dxChangeTo) {
+  dx = dxChangeTo;
+  dxChangeTo = null;
+}
+if(dyChangeTo) {
+  dy = dyChangeTo;
+  dyChangeTo = null;
+}
+
 
 //When the ball is shot
   // if(pleaseShoot) {
