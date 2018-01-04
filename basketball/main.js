@@ -34,14 +34,11 @@ var floor = 580;
 var gravity = 0.3;
 var paused = true;
 
-var showStart = true;
-
 var shootAgain = true;
 var shotHeight = 17;
 
 var score = 0;
-
-var startOfGame = true;
+var start = true;
 
 app.stage.addChild(basketBallShadow);
 app.stage.addChild(basketBall);
@@ -82,7 +79,12 @@ app.ticker.add(function(delta) {
 
 document.getElementById("debug").innerHTML  = "x=" + Math.floor(basketBall.x) + " y=" + Math.floor(basketBall.y);
 
-if (paused) {return;}
+if (paused) {
+  return;
+  start = false;
+} else {
+  start = true;
+}
   
 
 if(dxChangeTo) {
@@ -215,6 +217,7 @@ function showStartMenu () {
 function hideStartMenu () {
 
   document.getElementById("startingMenu").style.display = "none";
+  start = false;
 
 }
 
@@ -306,6 +309,22 @@ function hideStoreP () {
 
 }
 
+function alertBeforeExit() {
+
+  if (confirm("Are you sure you want to exit?\nAll your progress will be lost and coins unless you have an account!") == true) {
+        window.location.reload();
+    } 
+}
+
+function pauseButtonCheck() {
+
+  if (!start) {
+
+    showPauseMenu();
+
+  }
+}
+
 
 
 document.addEventListener('keydown', function(event) {
@@ -334,15 +353,15 @@ document.addEventListener('keydown', function(event) {
      showPauseMenu();
 
 
-  } else if (event.keyCode == 27 && paused) {
+   } //else if (event.keyCode == 27 && paused) {
 
-     paused = false;
-     startOfGame = false;
-     // app.stage.removeChild(exitToMainMenu);
+  //    paused = false;
+     
+  //    // app.stage.removeChild(exitToMainMenu);
 
-    hidePauseMenu();
+  //   hidePauseMenu();
 
-  }
+  // }
 
   // document.getElementById("debug").innerHTML = getMouseCoordinates()
 
