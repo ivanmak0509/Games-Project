@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+
+<title>Sign In</title>
+<p id="shutup"></p> 
+<style type="text/css">
+	
+#username { 
+	height:42px; 
+	width: 400px;
+	font-size:20pt; 
+}
+
+#password { 
+	height:42px; 
+	width: 400px;
+	font-size:20pt; 
+}
+
+#email { 
+	height:42px; 
+	width: 400px;
+	font-size:20pt; 
+}
+
+#login {
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+	background: rgba(0,0,0,1);
+	border:1px; 
+	height: 40px;
+	width:200px;
+	color: white;
+	border-radius: 5px;
+	font-size: 23px;
+}
+
+#login:hover {
+	background-color: rgb(60,60,60);
+}
+
+#background {
+	background-size:100vw;
+}
+
+#verticalfix {
+	height: 50vh;
+}
+
+#shutup {
+	color: white;
+}
+
+.profile {
+
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.profile:hover {
+
+	opacity: 0.4;
+
+}
+
+#profileImage {
+
+	position: relative;
+	right: 450px;
+	bottom: 330px;
+
+
+}
+
+/*#backToLogin {
+	position: relative;
+	top: 40px;
+	left: 200px;
+
+}*/
+
+#profileDescription {
+
+	color: white;
+
+}
+
+</style>
+<script type="text/javascript">
+	var usernameLogin
+
+	function debuggin() {
+	usernameLogin = document.getElementById("username").value;
+	document.getElementById("shutup").innerHTML = usernameLogin;	
+}
+
+
+
+    function profileOpener() {
+
+    	document.getElementById("profile").style.display = "";
+
+    }
+
+
+    function profileCloser() {
+
+    	document.getElementById("profile").style.display = "none";
+
+    }
+</script>
+</head>
+<!-- UI for profile -->
+<div id="profile" style="background: rgba(1,1,1,1); padding: 100px; border-radius: 40px; display:none; position:absolute; top:50%; left:50%; transform:translate3d(-50%, -50%, 0);"><center><h1 style="color: white;">Foxy32</h1></center><p id="profileDescription" style="font-size: 15pt;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><center><button  id = "backToLogin" style="cursor: pointer; background: rgba(255,255,255,1); border:1px; height: 60px; width:240px; font-size: 30px;" onclick="profileCloser();">Back</button></center></div>
+
+
+<body id="background" background="http://www.rome-convention.org/wp-content/uploads/2016/03/how-to-shoot-a-basketball.jpg" >
+
+<form id="verticalfix">
+	<center>
+		<img class="profile" src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-512.png" width="250px" height="250px" onclick="profileOpener();">
+		<br><br><br>
+  <input type="text" id="username" placeholder="Username" required><br><br>
+  <input type="password" id="password" placeholder="Password" required>
+  <br><br><input type="submit" id="login" value="Log In" onclick="debuggin();">
+</center>  
+</form>
+
+<form id="verticalfix">
+	<center>
+		<br><br><br>
+  <input type="text" id="username" placeholder="Username" required><br><br>
+  <input type="email" id="email" placeholder="Email(Optional)"><br><br>
+  <input type="password" id="password" placeholder="Password" required><br><br>
+  <input type="password" id="password" placeholder="Confirm password" required>
+  <br><br><input type="submit" id="login" value="Register">
+</center>  
+</form>
+
+</body>
+</html>

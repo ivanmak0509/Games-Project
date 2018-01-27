@@ -2,6 +2,7 @@ var app = new PIXI.Application(1260, 640, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
 
 
+
 // var renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
 // document.body.appendChild(app.view);
 app.view.style.position = 'absolute';
