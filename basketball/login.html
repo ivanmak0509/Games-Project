@@ -41,10 +41,6 @@
 	background-color: rgb(60,60,60);
 }
 
-#background {
-	background-size:100vw;
-}
-
 #verticalfix {
 	height: 50vh;
 }
@@ -113,10 +109,10 @@
 </script>
 </head>
 <!-- UI for profile -->
-<div id="profile" style="background: rgba(1,1,1,1); padding: 100px; border-radius: 40px; display:none; position:absolute; top:50%; left:50%; transform:translate3d(-50%, -50%, 0);"><center><h1 style="color: white;">Foxy32</h1></center><p id="profileDescription" style="font-size: 15pt;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><center><button  id = "backToLogin" style="cursor: pointer; background: rgba(255,255,255,1); border:1px; height: 60px; width:240px; font-size: 30px;" onclick="profileCloser();">Back</button></center></div>
+<div id="profile" style="background: rgba(1,1,1,1); padding: 50px; border-radius: 40px; display:none; position:absolute; top:50%; left:50%; transform:translate3d(-50%, -50%, 0);"><center><p style="color: white;  font-size: 30pt; bottom: 40px; position: relative;">Foxy32</p><img src="https://sandbox.cosmoquest.org/images/badges/IRL.png" width="100px" height="100px" style="position: relative; bottom: 40px; right: 0px; "><img src="https://sandbox.cosmoquest.org/images/badges/IRL.png" width="100px" height="100px" style="position: relative; bottom: 40px; left: 20px; "><img src="https://sandbox.cosmoquest.org/images/badges/IRL.png" width="100px" height="100px" style="position: relative; bottom: 40px; left: 190px; "><img src="https://sandbox.cosmoquest.org/images/badges/IRL.png" width="100px" height="100px" style="position: relative; bottom: 40px; left: 210px; "><button  id = "backToLogin" style="cursor: pointer; background: rgba(255,255,255,1); border:1px; height: 50px; position: relative; width:210px; font-size: 30px; top: 10px; right: 200px;" onclick="profileCloser();">Back</button></center></div>
 
 
-<body id="background" background="http://www.rome-convention.org/wp-content/uploads/2016/03/how-to-shoot-a-basketball.jpg" >
+<body>
 
 <form id="verticalfix">
 	<center>
@@ -134,7 +130,7 @@
   <input type="text" id="username" placeholder="Username" required><br><br>
   <input type="email" id="email" placeholder="Email(Optional)"><br><br>
   <input type="password" id="password" placeholder="Password" required><br><br>
-  <input type="password" id="password" placeholder="Confirm password" required>
+  <input type="password" id="password" placeholder="Confirm password" required><br><br>
   <br><br><input type="submit" id="login" value="Register">
 </center>  
 </form>
