@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	
+#topNav {
+
+	width: 100vw;
+	color: white;
+	font-size: 20pt;
+
+}
+
+#game1Icon {
+
+	position: relative;
+	width: 20vw;
+	left: 100px;
+	top: 50px;
+	 -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#game1Icon:hover {
+
+	opacity: 0.4;
+
+}
+
+</style>
+<script type="text/javascript">
+	
+function openGame1() {
+
+  document.getElementById("game1").style.display = "";
+}
+
+function closeGame1() {
+
+  document.getElementById("game1").style.display = "none";
+}
+
+function registerorlogin() {
+
+	window.location.href="http://localhost:8000/basketball/login.html"
+
+}
+</script>
+</head>
+<body>
+
+<div id="topNav" style="padding: 35px; background-color: rgba(1,1,1,1);">
+<center><h1>Store</h1></center>	
+</div>
+<img src="https://dfzcfb18p6v47.cloudfront.net/images/my_profile_icon_white.png?20180126011316" onclick="registerorlogin();" style="position: relative; bottom: 550px; width: 50px; height: 50px; cursor: pointer;">
+
+<div id="game1" style="z-index: 10; background: rgba(1,1,1,1); padding: 50px; border-radius: 40px; display:none; position:absolute; top:50%; left:50%; transform:translate3d(-50%, -50%, 0);"><center><img src="https://media.alienwarearena.com/media/360514-game-hd-wallpapers-video-game-wallpapers-desktop-0924-1920x1200.jpg" height="200px" style="width: 15vw;"><p id="description1" style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, eros ac facilisis dapibus, libero odio molestie justo, a vestibulum lectus mauris ut sem. Mauris egestas lectus ac odio blandit scelerisque. Sed in vestibulum lectus, eu imperdiet tortor. Cras at tellus pulvinar, porttitor quam sed, fermentum libero. Nam placerat volutpat nunc, quis euismod velit dignissim a. Vivamus non ornare turpis. Nullam vitae velit lacus. Etiam ac lorem vitae diam facilisis iaculis. Nullam cursus erat eu eros tincidunt porta. Nullam sed risus pretium tellus faucibus dignissim at non metus. Donec porttitor commodo nulla, quis pellentesque tortor. Vivamus eget nulla viverra, fringilla magna sit amet, lacinia magna.</p>><button id="buttonBack" style="cursor: pointer; background: rgba(255,255,255,1); border:1px; height: 50px; position: relative; width:210px; font-size: 30px; top: 10px; right: 200px;" onclick="closeGame1();">Back</button><button id="buttonBuy" style=" left: 200px; cursor: pointer; background: rgba(255,255,255,1); border:1px; height: 50px; position: relative; width:210px; font-size: 30px; top: 10px; right: 200px;" onclick="">Buy</button</center></div>
+
+<img id="game1Icon" src="http://laoblogger.com/images/game-icon-1.jpg" height="400px" onclick="openGame1();">
+
+</body>
+</html>
