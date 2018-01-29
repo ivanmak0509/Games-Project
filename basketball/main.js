@@ -1,8 +1,8 @@
 var app = new PIXI.Application(1260, 640, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
+var canvas = document.createElement('canvas');var texture = PIXI.Texture.fromCanvas(canvas);var spriteMask = new PIXI.Texture(texture);// how to animate "canvas" here and update it?mySprite.mask = spriteMask;
 
-
-
+spriteMask = (https://cdn.discordapp.com/attachments/392060865374846978/392069028086153237/floor.png.png)
 // var renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
 // document.body.appendChild(app.view);
 app.view.style.position = 'absolute';
