@@ -1,8 +1,12 @@
+mask_cont = new PIXI.Container();mask_cont.x = Math.floor( (@dims.w / 2) )mask_cont.y = Math.floor( (@dims.h / 2) )circle1 = new PIXI.Graphics();circle1.lineStyle(0);circle1.beginFill(0xFFFF0B, 0.5);circle1.drawCircle(0 , 0 , 50);circle1.endFill();mask_cont.addChild(circle1);stage_mask.addChild(mask_cont);fromcanvas_texture = PIXI.Texture.fromCanvas(renderer_mask.view);mask_sp = new PIXI.Sprite(fromcanvas_texture)mask_sp.x = mask_cont.x;mask_sp.y = mask_cont.y;stage.addChild(mask_sp);
+document.body.appendChild(app.view);
+
+
+
 var app = new PIXI.Application(1260, 640, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
 
-mask_cont = new PIXI.Container();mask_cont.x = Math.floor( (@dims.w / 2) )mask_cont.y = Math.floor( (@dims.h / 2) )circle1 = new PIXI.Graphics();circle1.lineStyle(0);circle1.beginFill(0xFFFF0B, 0.5);circle1.drawCircle(0 , 0 , 50);circle1.endFill();mask_cont.addChild(circle1);stage_mask.addChild(mask_cont);fromcanvas_texture = PIXI.Texture.fromCanvas(renderer_mask.view);mask_sp = new PIXI.Sprite(fromcanvas_texture)mask_sp.x = mask_cont.x;mask_sp.y = mask_cont.y;stage.addChild(mask_sp);
-document.body.appendChild(app.view);
+
 
 // var renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
 // document.body.appendChild(app.view);
