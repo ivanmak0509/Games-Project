@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Timeline</title>
+	<script src="main.js"></script>
+</head>
+<style type="text/css">
+	
+#topNav {
+
+	position: relative;
+	padding: 5px;
+	background-color: rgba(1,1,1,1);
+	color: white;
+	font-family: Helvetica;
+	bottom: 10px;
+	
+}
+
+.add {
+
+	position: relative;
+	cursor: pointer;
+	transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	padding: 34px;
+}
+
+.add:hover {
+
+	opacity: 0.5;
+}
+
+.button {
+
+	transition-duration: 0.4s;
+}
+
+.button:hover {
+
+	opacity: 0.5;
+}
+
+</style>
+<body>
+	<div id="topNav">
+		<center>
+			<h1>Timeline</h1>
+			<button onclick="addIcon();" style="cursor: pointer; position: relative; bottom: 10px; background-color: white; font-family: Helvetica; width: 70px; height: 30px; border-width: 3px; border-radius: 3px;"><bold>Add</bold></button>
+	</center>
+	</div>
+
+<div id="timeline">
+<img src="addIcon.png" height="300px;" class="add add1" onclick="add();">
+<img src="addIcon.png" height="300px;" class="add add2" onclick="add();">
+<img src="addIcon.png" height="300px;" class="add add3" onclick="add();">
+<img src="addIcon.png" height="300px;" class="add add4" onclick="add();">
+</div>	
+
+<div id="addMenu" style="position: sticky; position: -webkit-sticky; bottom: 200px;display:none; padding: 100px; background-color: rgba(1,1,1,0.9);">
+<center>	
+<button style="width: 200px; height: 50px; background-color: black; color: white; cursor: pointer;" class="button" onclick="addNotes();">Add a note</button><br><br><button style="width: 200px; height: 50px; background-color: black; color: white; cursor: pointer; left: 4px; position: relative;" class="button">Add a link</button><<br><br>
+
+</center>
+<div contenteditable="true" id="note" style="display: none; color: white; position: relative; left: 100px; font-family: Helvetica; font-size: 20pt; width: 1100px; left: 20%;" onkeyup="noteValue">
+  Your note.
+</div>
+<center>
+	<button class="button" id="noteSave" style="border-width: 0px; background-color: rgb(30,144,255); display: none; width: 150px; height: 40px; font-size: 16pt; position: relative;" onclick="saveNotes();">Save</button>
+</center>
+</div>
+
+</body>
+</html>

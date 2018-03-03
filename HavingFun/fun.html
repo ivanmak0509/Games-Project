@@ -1,34 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CHUPI(Official)</title>
 <style type="text/css">
-	
-#topNav {
 
-	width: 100vw;
-	color: white;
-	font-size: 20pt;
+.brickOut {
 
+	left: 300px;
+	top: 150px;	
 }
 
-#game1Icon {
+.basketBall {
+
+	left: 100px;
+	top: 150px;	
+}
+
+.games {
 
 	position: relative;
-	width: 20vw;
-	left: 100px;
-	top: 50px;
 	 -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-}
+   border-style: solid;
+   border-width: 10px;
 
-#game1Icon:hover {
-
-	opacity: 0.4;
 
 }
 
+.games:hover {
+
+	height: 380px;
+	opacity: 0.6;
+	border-style: dotted;
+	border-width: 4px;
+}
+
+body {
+  margin: 0;
+  font-size: 28px;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+#navbar a {
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20pt;
+   -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
 </style>
 <script type="text/javascript">
 	
@@ -45,20 +97,124 @@ function closeGame1() {
 function registerorlogin() {
 
 	window.location.href="http://localhost:8000/basketball/login.html"
-
 }
+
+function openMusic1() {
+
+	document.getElementById("music1").style.display = "";
+}
+
+function closeMusic1() {
+
+	document.getElementById("music1").style.display = "none";
+}
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
 </script>
 </head>
 <body>
-
-<div id="topNav" style="padding: 35px; background-color: rgba(1,1,1,1);">
-<center><h1>Store</h1></center>	
+<div id="navbar" style="width: 100vw;">
+  <a class="active" href="javascript:void(0)" style="font-family: Helvetica; font-size: 60pt;">CHUPI</a>
+  <a href="javascript:void(0)" style="font-family: Helvetica; font-size: 20pt;">Download</a>
+  <a href="javascript:void(0)" style="font-family: Helvetica; font-size: 20pt;">Feedback</a>
 </div>
-<img src="https://dfzcfb18p6v47.cloudfront.net/images/my_profile_icon_white.png?20180126011316" onclick="registerorlogin();" style="position: relative; bottom: 550px; width: 50px; height: 50px; cursor: pointer;">
+<div style="position: relative; padding: 1px; background-color: rgba(1,1,1,0.9); width: 100vw; color: white; bottom: 0px;">
+<center><h1 style="font-size: 30pt; font-family: Helvetica;">Updates</h1></center>	
+</div>
+<div style="position: relative; padding: 1px; background-color: rgba(1,1,1,0.8); width: 100vw; color: white; font-size: 20pt; top: 100px;">
+<center><h1 style="font-size: 30pt; font-family: Helvetica;">Our free games</h1></center>	
+</div>
+<img class="games basketBall" src="basketballicon.png" height="400px" onclick="window.location.href='http://localhost:8000/basketball/index3.html'">
 
-<div id="game1" style="z-index: 10; background: rgba(1,1,1,1); padding: 50px; border-radius: 40px; display:none; position:absolute; top:50%; left:50%; transform:translate3d(-50%, -50%, 0);"><center><img src="https://media.alienwarearena.com/media/360514-game-hd-wallpapers-video-game-wallpapers-desktop-0924-1920x1200.jpg" height="200px" style="width: 15vw;"><p id="description1" style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, eros ac facilisis dapibus, libero odio molestie justo, a vestibulum lectus mauris ut sem. Mauris egestas lectus ac odio blandit scelerisque. Sed in vestibulum lectus, eu imperdiet tortor. Cras at tellus pulvinar, porttitor quam sed, fermentum libero. Nam placerat volutpat nunc, quis euismod velit dignissim a. Vivamus non ornare turpis. Nullam vitae velit lacus. Etiam ac lorem vitae diam facilisis iaculis. Nullam cursus erat eu eros tincidunt porta. Nullam sed risus pretium tellus faucibus dignissim at non metus. Donec porttitor commodo nulla, quis pellentesque tortor. Vivamus eget nulla viverra, fringilla magna sit amet, lacinia magna.</p>><button id="buttonBack" style="cursor: pointer; background: rgba(255,255,255,1); border:1px; height: 50px; position: relative; width:210px; font-size: 30px; top: 10px; right: 200px;" onclick="closeGame1();">Back</button><button id="buttonBuy" style=" left: 200px; cursor: pointer; background: rgba(255,255,255,1); border:1px; height: 50px; position: relative; width:210px; font-size: 30px; top: 10px; right: 200px;" onclick="">Buy</button</center></div>
+<img class="games brickOut" src="brickOutIcon.png"  height="400px" style="right: 200px;" onclick="window.location.href='http://localhost:8000/brickout/'">
 
-<img id="game1Icon" src="http://laoblogger.com/images/game-icon-1.jpg" height="400px" onclick="openGame1();">
+<div style="position: relative; padding: 1px; background-color: rgba(1,1,1,0.8); width: 100vw; color: white; font-size: 20pt; top: 200px;">
+<center><h1 style="font-size: 30pt; font-family: Helvetica;">Q&A</h1></center>	
+</div>
+<center><p style="font-family: Helvetica; font-size: 15pt;">
+<br><br><br><br><br><br><br><br><br><br>
+	Q:How do you do open the game after downloading?<br><br>
+
+A: You just need to drag the html file to your web browser.
+<br><br><br>
+Q: How serious is academic cheating today?<br><br>
+
+A: A number of surveys confirm the rise in cheating. According to researcher Stephen Davis, while about 20% of college students admitted to cheating in high school in the 1940s, today between 75% and 98% of the 8,000 college students surveyed each year report cheating in high school. But statistics aside, what is really serious is the depth of cheating. It's become acceptable and commonplace, which magnifies the problem and has wider implications for the ethical development of our children..
+<br><br><br>
+Q: Why should our nation be concerned with the issue? If someone chooses to cheat they aren't hurting anyone else.<br><br>
+
+A: Cheating undermines integrity and fairness at all levels. It is a barrier to learning that can lead to weak performance in many areas of life.
+<br><br><br>
+While most students who cheat do not believe their behavior effects anyone else, that is far from the case. As these students go out to find their place in the world they will be judged by their performance. If their performance does not correlate to the grades received, not only does this harm the reputation of the alma mater, but it also decreases the value of the degree, as well as the value of every other degree granted by that institution. Why would a business or graduate school take a chance on another person from the same school if previous students with high academic standards proved themselves to be mediocre?
+
+To those who don't think that cheating effects others we ask: how would you feel knowing that your physician cheated in medical school? You may wonder, if he cheated then, is he cheating now? Think about the pilot taking your family on vacation, your attorney, your accountant, etc.
+<br><br><br>
+Q: Why are we as a nation just sitting back and allowing this?<br><br>
+
+A: A number of academic leaders -- including ETS -- have been trying for years to curb cheating. But we have an atmosphere today, especially with the doors opened by the Internet, that ought to sound alarms. And ETS, and a number of allies, is about to sound the public alarm bell, loudly and persistently. To that end, we have formed a partnership with the Advertising Council to address this issue on a national level.
+<br><br><br>
+Q: In the face of the recent White House scandal, haven't we set a tone that says it's o.k. to cheat?<br><br>
+
+A: Politics aside (we don't take sides politically), we do hope the outcome of this is to tell our young people in particular that cheating is wrong and has consequences.
+<br><br><br>
+Q: Let's face it -- you are only one organization. No matter what you do, the problem is gigantic.<br><br>
+
+A: The war on cheating needs to be waged on multiple fronts -- around the kitchen table, in the classroom, in houses of worship and in the media. It is a long-term, steady combination of communication and action that, we believe, will make a real difference.
+<br><br><br>
+Q: What is your view of reward vs. punishment?<br><br>
+
+A: It is not an all or nothing proposition. We need to do both.
+<br><br><br>
+Q: What is the Advertising Council?<br><br>
+
+A: The Advertising Council is a private, non-profit organization of volunteers who conduct advertising campaigns for the public good. The Council is the largest source of public service advertising in the country.
+<br><br><br>
+Q: What campaigns have they launched that I might be familiar with?<br><br><br><br>
+
+A: A few of their more popular campaign slogans include Only You Can Prevent Forest Fires; A Mind is A Terrible Thing To Waste; Don't Be A Dummy – Buckle Up, Friends Don't Let Friends Drive Drunk
+<br><br><br>
+Q: Why did Educational Testing Service decide to take on this issue?<br><br>
+
+A: It's really quite simple: The quality, fairness and integrity of our tests are of the highest importance to us. For more than 50 years we have helped to identify, enhance and maintain fair, high standards for tens of millions of Americans in their pursuit of higher education and career opportunities.
+
+Issues of security in the test environment and the complex web of causes for cheating concern us deeply. ETS has addressed this on an ongoing basis for many years and is continuing to focus on this issue, particularly in light of changing logistical, technological and human concerns.
+
+Above all, we must assure every test taker that no one has an unearned or undeserved advantage. We will continue to address this problem, doing everything possible to prevent cheating. Our goal, as always, is to assure the most accurate and fair test results.
+<br><br><br>
+Q: There are many who would say "We are a nation of cheaters, so why bother?"<br><br>
+
+A: We believe that an Ad Council campaign that is focused on the value of academic honesty will truly increase awareness of the issue and perhaps most important, move children, as well as their parents and teachers, to recognize that cheating prevents learning and masks their true accomplishments and weaknesses.
+<br><br><br><br><br><br>
+Q: If this problem is as widespread as you claim, a few public service ads aren't going to change it.<br><br>
+
+A: Cheating is a significant societal problem that needs to be addressed. As a nation, we have witnessed changes in morals and behaviors in recent years which can be attributed to the success of current and previous Ad council campaigns. For example, 79% of Americans say they have stopped someone from driving after drinking; $1 billion has been raised to help The College Fund/UNCF send more than 300,000 minority students to college; and, safety belt use has increased from 21% in 1985 when that campaign was first launched to 70% in 1996. How many of us were recycling anything at home or in our offices ten years ago? Look at us now. We, as a people, absolutely are capable of dramatic change.
+<br><br><br>
+Q: What do you hope to accomplish with this campaign?<br><br>
+
+A: In the beginning, our goal will be to raise national awareness about the fact that cheating is a serious problem and it is clearly, unequivocally wrong. Ultimately, we would like to see a renewed commitment to learning without cheating, as well as recognition of the fact that cheating cheats the cheater and deprives learning. Thus, testing and certifications would gain renewed respect and trust.
+<br><br><br>
+Q: Are their any other organizations, such as the College Board, involved in sponsoring this campaign with you?<br><br>
+
+A: Not at this time, but perhaps in the future. This campaign begins as a partnership between the Ad Council and ETS. We do however, have numerous allies in the fields of education and ethics. Additionally, the Ad Council and ETS are seeking corporate support to expand this campaign.
+<br><br><br>
+Q: Cheating seems like such a small problem when you stop to consider other problems like school violence.<br><br>
+
+A: Unfortunately, there are a number of serious problems facing our students today. Cheating however is certainly not a small problem. In fact it has grown at all levels – elementary through graduate school and beyond – to an all time high. One of the big problems contributing to this behavior is that it is accepted within our society. If we as a society continue to accept cheating or to think of it as a small problem, what type of future will our children face? Will their society consist of highly trained professionals or doctors, engineers, nuclear physicists, pilots, attorneys who cheated on their exams? And, if we look the other way when it comes to cheating, will America's children have the strong set of ethics that are essential to this great society? We think cheating can longer be ignored. 
+</p>
+</center>
+
 
 </body>
 </html>
